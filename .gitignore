@@ -1,0 +1,32 @@
+# Environment variables (contains sensitive credentials)
+.env
+
+# Tracking file (only ignore locally, GitHub Actions will commit this)
+# seen_posts.json is tracked in git for GitHub Actions to maintain state
+
+# Log files
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

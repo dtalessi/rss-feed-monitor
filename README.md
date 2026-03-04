@@ -48,14 +48,14 @@ you@example.com, teammate@example.com, another@example.com
 
 All addresses listed will receive the same notification email the next time a new post is detected. No code changes or redeployment needed.
 
-> **Note:** All recipients will be visible to each other in the `To` field. If you'd prefer recipients not to see one another's addresses, you'll need to modify `send_email` in `rss_monitor_once.py` to send individual emails per address or move extra addresses to BCC.
+> **Privacy:** Recipients are sent as BCC, so no one in the list can see the other addresses.
 
 ## Limitations
 
 - **GitHub Actions cron scheduling is not exact.** GitHub does not guarantee that scheduled workflows fire precisely on time — during periods of high load, runs can be delayed by several minutes or more. The monitor is designed for near-real-time alerts, not second-level precision.
 - **GitHub may pause scheduled workflows on inactive repos.** If a repository has no commits or other activity for 60 days, GitHub automatically disables scheduled workflows. To re-enable, go to the **Actions** tab and click **Enable**.
 - **Gmail sending limits.** Free Gmail accounts are capped at 500 outbound emails per day via SMTP. If the blog is very active or you have many recipients, you could hit this limit. Google Workspace accounts have a higher limit (2,000/day).
-- **All recipients see each other's addresses.** Emails are sent with all addresses in the `To` field. There is no BCC or per-recipient sending out of the box.
+- **All recipients are BCC'd.** No recipient can see the other addresses in the list.
 - **The `RECIPIENT_EMAIL` secret has a character limit.** GitHub Actions secrets can store up to 48 KB, so the comma-separated list can be very long in practice, but it is not unlimited.
 - **No unsubscribe mechanism.** There is no built-in way for recipients to opt out. To remove someone, you must edit the `RECIPIENT_EMAIL` secret manually.
 - **One RSS feed per workflow.** The current setup monitors a single feed (`RSS_FEED_URL`). To monitor additional feeds, duplicate the workflow file and set separate secrets for each.

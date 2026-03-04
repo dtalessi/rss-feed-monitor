@@ -155,7 +155,8 @@ class RSSMonitor:
             msg = MIMEMultipart('alternative')
             msg['Subject'] = f"New Blog Post: {entry.get('title', 'No Title')}"
             msg['From'] = self.gmail_user
-            msg['To'] = self.recipient_email
+            msg['To'] = self.gmail_user
+            msg['Bcc'] = self.recipient_email
 
             # Create HTML content
             html_content = self._create_html_email(entry)

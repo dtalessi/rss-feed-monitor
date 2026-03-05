@@ -153,7 +153,7 @@ class RSSMonitor:
         """Send email notification for a new post"""
         try:
             msg = MIMEMultipart('alternative')
-            msg['Subject'] = f"New Blog Post: {entry.get('title', 'No Title')}"
+            msg['Subject'] = f"New CFSBK Blog Post: {entry.get('title', 'No Title')}"
             msg['From'] = self.gmail_user
             msg['To'] = self.gmail_user
             msg['Bcc'] = self.recipient_email
